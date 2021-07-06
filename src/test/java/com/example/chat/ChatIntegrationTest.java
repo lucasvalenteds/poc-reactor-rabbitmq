@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class ChatITest extends IntegrationTestConfiguration {
+class ChatIntegrationTest extends IntegrationTestConfiguration {
 
     private static final String MESSAGE_1 = "Have a great day, Mary!";
     private static final String MESSAGE_2 = "Thanks John. Have a great day too!";
