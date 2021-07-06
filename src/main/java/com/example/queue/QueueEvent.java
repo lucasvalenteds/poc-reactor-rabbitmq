@@ -14,6 +14,9 @@ public final class QueueEvent<PAYLOAD> {
     private LocalDateTime timestamp;
     private PAYLOAD payload;
 
+    QueueEvent() {
+    }
+
     public UUID getId() {
         return id;
     }
@@ -44,16 +47,6 @@ public final class QueueEvent<PAYLOAD> {
 
     public void setPayload(PAYLOAD payload) {
         this.payload = payload;
-    }
-
-    @Override
-    public String toString() {
-        return "QueueEvent{" +
-            "id=" + id +
-            ", version='" + version + '\'' +
-            ", timestamp=" + timestamp +
-            ", payload=" + payload +
-            '}';
     }
 
     public static <T> QueueEvent<T> createEvent(T payload) {

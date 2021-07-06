@@ -7,6 +7,9 @@ public final class Message {
     private UUID id;
     private String content;
 
+    Message() {
+    }
+
     public UUID getId() {
         return id;
     }
@@ -30,13 +33,5 @@ public final class Message {
         message.setContent(content);
 
         return message;
-    }
-
-    @Override
-    public String toString() {
-        return "Message{" +
-            "id=" + id +
-            ", content='" + content + '\'' +
-            '}';
     }
 }

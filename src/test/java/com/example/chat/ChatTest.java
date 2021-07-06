@@ -13,15 +13,15 @@ import reactor.test.StepVerifier;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ChatTest extends IntegrationTestConfiguration {
+class ChatTest extends IntegrationTestConfiguration {
 
-    public static final String MESSAGE_1 = "Have a great day, Mary!";
-    public static final String MESSAGE_2 = "Thanks John. Have a great day too!";
+    private static final String MESSAGE_1 = "Have a great day, Mary!";
+    private static final String MESSAGE_2 = "Thanks John. Have a great day too!";
 
     private Chat chat;
 
     @BeforeEach
-    public void beforeEach(ApplicationContext context) {
+    void beforeEach(ApplicationContext context) {
         this.chat = new Chat(
             context.getBean(Sender.class),
             context.getBean(Receiver.class),
@@ -31,7 +31,7 @@ public class ChatTest extends IntegrationTestConfiguration {
     }
 
     @RepeatedTest(10)
-    public void testSendingAndReadingMessages() {
+    void testSendingAndReadingMessages() {
         var sending = Flux.just(MESSAGE_1, MESSAGE_2)
             .flatMap(chat::send);
 

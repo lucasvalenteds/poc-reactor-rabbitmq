@@ -22,7 +22,7 @@ public abstract class IntegrationTestConfiguration {
     private static final RabbitMQContainer CONTAINER = new RabbitMQContainer(DockerImageName.parse(IMAGE));
 
     @DynamicPropertySource
-    private static void queueProperties(final DynamicPropertyRegistry registry) {
+    private static void queueProperties(DynamicPropertyRegistry registry) {
         registry.add("rabbitmq.username", CONTAINER::getAdminUsername);
         registry.add("rabbitmq.password", CONTAINER::getAdminPassword);
         registry.add("rabbitmq.host", CONTAINER::getHost);
