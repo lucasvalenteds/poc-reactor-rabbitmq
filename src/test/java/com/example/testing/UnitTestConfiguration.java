@@ -1,6 +1,6 @@
 package com.example.testing;
 
-import com.example.AppConfiguration;
+import com.example.chat.ChatConfiguration;
 import com.example.queue.QueueProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import reactor.rabbitmq.Receiver;
 import reactor.rabbitmq.Sender;
 
 @ExtendWith(SpringExtension.class)
-@SpringJUnitConfig(AppConfiguration.class)
+@SpringJUnitConfig(ChatConfiguration.class)
 public abstract class UnitTestConfiguration {
 
     protected final Sender sender = Mockito.mock(Sender.class);

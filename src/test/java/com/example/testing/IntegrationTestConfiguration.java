@@ -1,6 +1,6 @@
 package com.example.testing;
 
-import com.example.AppConfiguration;
+import com.example.chat.ChatConfiguration;
 import com.example.queue.QueueConfiguration;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -13,7 +13,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
 @ExtendWith(SpringExtension.class)
-@SpringJUnitConfig({QueueConfiguration.class, AppConfiguration.class})
+@SpringJUnitConfig({QueueConfiguration.class, ChatConfiguration.class})
 @Testcontainers
 public abstract class IntegrationTestConfiguration {
 
