@@ -18,6 +18,7 @@ import java.util.UUID;
 
 public final class Chat {
 
+    private static final String QUEUE_EVENT_CONTENT_TYPE = "application/json";
     private static final TypeReference<QueueEvent<Message>> QUEUE_EVENT_TYPE_REFERENCE = new TypeReference<>() {
     };
 
@@ -60,7 +61,7 @@ public final class Chat {
                     new AMQP.BasicProperties.Builder()
                         .appId(queueProperties.getAppId())
                         .deliveryMode(queueProperties.getDeliveryMode())
-                        .contentType("application/json")
+                        .contentType(QUEUE_EVENT_CONTENT_TYPE)
                         .contentEncoding(StandardCharsets.UTF_8.displayName())
                         .build(),
                     eventSerialized)
