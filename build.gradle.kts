@@ -27,6 +27,7 @@ dependencies {
     implementation("javax.annotation", "javax.annotation-api", properties["version.javax.annotation"].toString())
 
     testImplementation("org.junit.jupiter", "junit-jupiter", properties["version.junit"].toString())
+    testImplementation("org.assertj", "assertj-core", properties["version.assertj"].toString())
     testImplementation("org.testcontainers", "testcontainers", properties["version.testcontainers"].toString())
     testImplementation("org.testcontainers", "junit-jupiter", properties["version.testcontainers"].toString())
     testImplementation("org.testcontainers", "rabbitmq", properties["version.testcontainers"].toString())
