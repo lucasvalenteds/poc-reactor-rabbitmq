@@ -21,6 +21,9 @@ dependencies {
     implementation("io.projectreactor.rabbitmq", "reactor-rabbitmq", properties["version.rabbitmq"].toString())
     testImplementation("io.projectreactor", "reactor-test", properties["version.reactor"].toString())
 
+    implementation("com.fasterxml.jackson.core", "jackson-databind", properties["version.jackson"].toString())
+    implementation("com.fasterxml.jackson.datatype", "jackson-datatype-jsr310", properties["version.jackson"].toString())
+
     implementation("javax.annotation", "javax.annotation-api", properties["version.javax.annotation"].toString())
 
     testImplementation("org.junit.jupiter", "junit-jupiter", properties["version.junit"].toString())
