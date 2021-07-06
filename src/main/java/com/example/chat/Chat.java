@@ -18,6 +18,7 @@ import reactor.rabbitmq.Receiver;
 import reactor.rabbitmq.Sender;
 
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
 public final class Chat {
 
@@ -63,6 +64,7 @@ public final class Chat {
                     queueProperties.getExchange(),
                     queueProperties.getRoutingKey(),
                     new AMQP.BasicProperties.Builder()
+                        .messageId(UUID.randomUUID().toString())
                         .appId(queueProperties.getAppId())
                         .deliveryMode(queueProperties.getDeliveryMode())
                         .contentType(QUEUE_EVENT_CONTENT_TYPE)
