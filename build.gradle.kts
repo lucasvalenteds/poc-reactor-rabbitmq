@@ -28,6 +28,7 @@ dependencies {
 
     testImplementation("org.junit.jupiter", "junit-jupiter", properties["version.junit"].toString())
     testImplementation("org.assertj", "assertj-core", properties["version.assertj"].toString())
+    testImplementation("org.mockito", "mockito-core", properties["version.mockito"].toString())
     testImplementation("org.testcontainers", "testcontainers", properties["version.testcontainers"].toString())
     testImplementation("org.testcontainers", "junit-jupiter", properties["version.testcontainers"].toString())
     testImplementation("org.testcontainers", "rabbitmq", properties["version.testcontainers"].toString())
