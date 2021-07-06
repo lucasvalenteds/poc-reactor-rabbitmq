@@ -35,7 +35,7 @@ class ChatTest extends IntegrationTestConfiguration {
         );
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(100)
     void testSendingAndReadingMessages() {
         var sending = Flux.just(MESSAGE_1, MESSAGE_2)
             .flatMap(chat::send);
