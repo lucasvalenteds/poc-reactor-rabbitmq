@@ -64,7 +64,8 @@ public final class Chat {
                         .contentType(QUEUE_EVENT_CONTENT_TYPE)
                         .contentEncoding(StandardCharsets.UTF_8.displayName())
                         .build(),
-                    eventSerialized)
+                    eventSerialized
+                )
             )
             .subscribeOn(Schedulers.boundedElastic());
     }
