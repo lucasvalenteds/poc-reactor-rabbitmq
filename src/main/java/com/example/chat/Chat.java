@@ -14,7 +14,6 @@ import reactor.rabbitmq.Receiver;
 import reactor.rabbitmq.Sender;
 
 import java.nio.charset.StandardCharsets;
-import java.util.UUID;
 
 public final class Chat {
 
@@ -34,15 +33,14 @@ public final class Chat {
         this.queueProperties = queueProperties;
     }
 
-    public Mono<UUID> send(String text) {
+    public Mono<QueueEvent<Message>> send(String text) {
         return Mono.just(text)
             .map(Message::withContent)
             .map(QueueEvent::createEvent)
             .delayUntil(event ->
                 Mono.from(serializeEvent(event))
                     .flatMapMany(messageBody -> sender.sendWithTypedPublishConfirms(Flux.just(messageBody)))
-            )
-            .map(event -> event.getPayload().getId());
+            );
     }
 
     public Flux<Message> read() {

@@ -1,5 +1,6 @@
 package com.example.chat;
 
+import com.example.queue.QueueEvent;
 import com.example.queue.QueueProperties;
 import com.example.testing.IntegrationTestConfiguration;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +12,11 @@ import reactor.rabbitmq.Receiver;
 import reactor.rabbitmq.Sender;
 import reactor.test.StepVerifier;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class ChatTest extends IntegrationTestConfiguration {
 
@@ -36,7 +41,20 @@ class ChatTest extends IntegrationTestConfiguration {
             .flatMap(chat::send);
 
         StepVerifier.create(sending)
-            .expectNextCount(2L)
+            .expectNextCount(1L)
+            .assertNext(event -> {
+                assertNotNull(event.getId());
+                assertEquals(UUID.class, event.getId().getClass());
+
+                assertEquals(QueueEvent.Version.V1.name(), event.getVersion());
+
+                assertNotNull(event.getTimestamp());
+
+                assertNotNull(event.getPayload());
+                assertNotNull(event.getPayload().getId());
+                assertEquals(UUID.class, event.getPayload().getId().getClass());
+                assertNotNull(event.getPayload().getContent());
+            })
             .verifyComplete();
 
         var reading = chat.read()
